@@ -257,15 +257,13 @@ Gemini 2.0 Flash was chosen for its native structured-output mode (`responseMime
 
 ## Screenshots
 
-> Run the app locally and drop screenshots into a `docs/screenshots/` folder, then reference them below — e.g. `![Dashboard](docs/screenshots/dashboard.png)`.
-
 | Landing | Dashboard |
 |---|---|
-| _screenshot placeholder_ | _screenshot placeholder_ |
+| ![Landing page hero with animated dashboard preview](docs/screenshots/landing.png) | ![Dashboard with stat widgets, AI Health, and classification distribution](docs/screenshots/dashboard.png) |
 
 | Session Analyzer | Analytics |
 |---|---|
-| _screenshot placeholder_ | _screenshot placeholder_ |
+| ![Session Analyzer showing a Cart Abandoner classification with confidence meter and evidence](docs/screenshots/analyzer.png) | ![Analytics page with classification distribution and session trend charts](docs/screenshots/analytics.png) |
 
 <br />
 
