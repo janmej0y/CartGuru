@@ -7,7 +7,7 @@ const FOOTER_LINKS = [
   { label: "Playground", href: "/playground" },
   { label: "Analytics", href: "/analytics" },
   { label: "About", href: "/about" },
-  { label: "GitHub", href: "#" },
+  { label: "GitHub", href: "https://github.com/janmej0y/CartGuru", external: true },
 ];
 
 export function Footer() {
@@ -22,15 +22,27 @@ export function Footer() {
         </div>
 
         <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-          {FOOTER_LINKS.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {FOOTER_LINKS.map((link) =>
+            link.external ? (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </nav>
 
         <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} CartGuru. All rights reserved.</p>

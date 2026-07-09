@@ -102,7 +102,7 @@ export function Hero() {
           </MagneticWrapper>
           <MagneticWrapper>
             <Button asChild variant="outline" size="lg">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/janmej0y/CartGuru" target="_blank" rel="noopener noreferrer">
                 <Github className="h-4 w-4" />
                 GitHub
               </a>

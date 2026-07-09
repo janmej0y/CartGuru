@@ -283,7 +283,7 @@ export default function AboutPage() {
               </Link>
             </Button>
             <Button asChild variant="ghost">
-              <a href="#" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/janmej0y/CartGuru" target="_blank" rel="noopener noreferrer">
                 <Github className="h-4 w-4" />
                 View on GitHub
               </a>
