@@ -1,0 +1,243 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 240 10% 4%;
+  --foreground: 0 0% 98%;
+
+  --surface: 240 5% 7%;
+  --surface-2: 240 5% 9%;
+  --surface-3: 240 5% 12%;
+
+  --card: 240 5% 7%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 6% 8%;
+  --popover-foreground: 0 0% 98%;
+
+  --border: 240 5% 16%;
+  --input: 240 5% 16%;
+  --ring: 252 95% 68%;
+
+  --muted: 240 5% 14%;
+  --muted-foreground: 240 5% 65%;
+
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 6% 10%;
+  --secondary: 240 5% 12%;
+  --secondary-foreground: 0 0% 98%;
+
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 98%;
+
+  --accent-purple: 258 90% 66%;
+  --accent-blue: 217 91% 60%;
+  --accent-emerald: 160 84% 39%;
+
+  --confidence-high: 142 71% 45%;
+  --confidence-mid: 38 92% 50%;
+  --confidence-low: 0 72% 51%;
+
+  --radius: 14px;
+
+  --gradient-start: 0 0% 100%;
+  --shadow-card-inset: 255 255 255 / 0.04;
+}
+
+:root[data-theme="light"] {
+  --background: 240 20% 98.5%;
+  --foreground: 240 10% 8%;
+
+  --surface: 0 0% 100%;
+  --surface-2: 240 20% 97%;
+  --surface-3: 240 15% 94%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 8%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 8%;
+
+  --border: 240 12% 88%;
+  --input: 240 12% 88%;
+  --ring: 252 90% 58%;
+
+  --muted: 240 15% 94%;
+  --muted-foreground: 240 6% 42%;
+
+  --primary: 240 10% 8%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 15% 94%;
+  --secondary-foreground: 240 10% 8%;
+
+  --destructive: 0 72% 45%;
+  --destructive-foreground: 0 0% 100%;
+
+  --accent-purple: 258 82% 56%;
+  --accent-blue: 217 85% 52%;
+  --accent-emerald: 160 84% 33%;
+
+  --confidence-high: 142 65% 36%;
+  --confidence-mid: 38 88% 42%;
+  --confidence-low: 0 68% 46%;
+
+  --gradient-start: 240 10% 8%;
+  --shadow-card-inset: 15 15 20 / 0.03;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-feature-settings: "cv11", "ss01";
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background-color: hsl(var(--accent-purple) / 0.3);
+  color: hsl(var(--foreground));
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 999px;
+  border: 2px solid hsl(var(--background));
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.4);
+}
+
+/* Focus visibility */
+:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@layer utilities {
+  .glass {
+    background: linear-gradient(180deg, hsl(var(--surface-2) / 0.7), hsl(var(--surface) / 0.55));
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+  }
+
+  .glass-border {
+    position: relative;
+    border: 1px solid hsl(var(--border));
+  }
+
+  .gradient-border {
+    position: relative;
+    border-radius: var(--radius);
+  }
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(var(--accent-purple) / 0.5), hsl(var(--accent-blue) / 0.2) 40%, transparent 70%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--gradient-start)) 20%, hsl(var(--accent-purple)) 65%, hsl(var(--accent-blue)) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-emerald {
+    background: linear-gradient(135deg, hsl(var(--accent-emerald)), hsl(var(--accent-blue)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .shimmer-text {
+    background: linear-gradient(90deg, hsl(var(--muted-foreground)) 0%, hsl(var(--foreground)) 50%, hsl(var(--muted-foreground)) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 2.5s linear infinite;
+  }
+
+  .skeleton {
+    background: linear-gradient(90deg, hsl(var(--surface-2)) 0%, hsl(var(--surface-3)) 50%, hsl(var(--surface-2)) 100%);
+    background-size: 200% auto;
+    animation: shimmer 1.8s linear infinite;
+  }
+
+  .noise-bg {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+
+  .dot-grid {
+    background-image: radial-gradient(hsl(var(--border)) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}
+
+:root[data-theme="light"] .glass {
+  background: linear-gradient(180deg, hsl(var(--surface) / 0.85), hsl(var(--surface-2) / 0.7));
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  html[data-theme] {
+    color-scheme: light;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #0a0a0c !important;
+  }
+
+  .print-section {
+    break-inside: avoid;
+  }
+
+  .print-page-break {
+    break-before: page;
+  }
+
+  .glass,
+  .gradient-border,
+  [class*="shadow-"] {
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
